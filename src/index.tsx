@@ -6,6 +6,7 @@ import './datadogRUM-init';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
+import ModelViewer from './pages/ModelViewer';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -19,6 +20,7 @@ root.render(
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/about/:id" element={<About />} />
+          <Route path="/model" element={<ModelViewer />} />
         </Route>
       </Routes>
     </BrowserRouter>
