@@ -2,7 +2,7 @@
   "name": "vexrune",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "/",
   "dependencies": {
     "@datadog/browser-rum": "^7.2.0",
     "@datadog/browser-rum-react": "^7.2.0",
