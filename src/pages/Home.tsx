@@ -24,8 +24,9 @@ const Container = styled.div`
 
 /* ── Data ── */
 const projectItems: ListItem[] = [
-  { num: '01', title: '个人 Wiki 知识库', desc: '基于现代化知识管理系统的个人 Wiki 平台', href: 'http://wiki.vexrune.top/' },
-  { num: '02', title: 'AI Agent 智能体', desc: '自主决策的 AI Agent，执行多步骤任务', href: 'https://github.com/vex-rune/vex-owl' },
+  { num: '01', title: 'Vex MSA 材料截面分析仪', desc: '面向材料质检实验室的一体化桌面工作台', href: '/product/msa' },
+  { num: '02', title: '个人 Wiki 知识库', desc: '基于现代化知识管理系统的个人 Wiki 平台', href: 'http://wiki.vexrune.top/' },
+  { num: '03', title: 'AI Agent 智能体', desc: '自主决策的 AI Agent，执行多步骤任务', href: 'https://github.com/vex-rune/vex-owl' },
 ];
 
 const aboutItems: ListItem[] = [
