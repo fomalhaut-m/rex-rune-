@@ -307,7 +307,7 @@ export default function ProductMSA() {
         {/* ===== Hero ===== */}
         <HeroSection>
           <HeroTitle variants={fadeInUp}>
-            Vex MSA — 材料截面分析仪
+            Vex MSA
           </HeroTitle>
           <HeroSubtitle variants={fadeInUp}>
             面向材料质检实验室的一体化工作台，将大图分块、截面提取、智能质检、人工复核、数据沉淀整合为单桌面程序。
