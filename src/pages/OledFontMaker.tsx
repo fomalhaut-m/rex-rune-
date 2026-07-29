@@ -28,28 +28,34 @@ const Content = styled(motion.main)`
   width: 85%;
   max-width: 1280px;
   margin: 0 auto;
+  padding: 0 8px;
+  box-sizing: border-box;
   @media (max-width: 768px) {
     width: 100%;
+    padding: 0 12px;
   }
 `;
 
 const Hero = styled.section`
   text-align: center;
-  padding: 24px 0 32px;
+  padding: 24px 8px 32px;
 `;
 
 const Title = styled(motion.h1)`
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.6rem, 5vw, 3rem);
   font-weight: 900;
   margin-bottom: 12px;
+  line-height: 1.2;
+  word-break: break-word;
 `;
 
 const Subtitle = styled(motion.p)`
-  font-size: 1rem;
+  font-size: clamp(0.92rem, 2.2vw, 1rem);
   color: var(--color-text-secondary);
   max-width: 720px;
   margin: 0 auto 24px;
   line-height: 1.7;
+  padding: 0 4px;
 `;
 
 /* ── Tabs ── */
@@ -59,11 +65,20 @@ const Tabs = styled.div`
   margin-bottom: 24px;
   flex-wrap: wrap;
   border-bottom: 1px solid var(--color-border);
+  @media (max-width: 600px) {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    > button {
+      flex: 0 0 auto;
+    }
+  }
 `;
 
 const Tab = styled.button<{ $active: boolean }>`
-  padding: 12px 24px;
-  font-size: 0.95rem;
+  padding: 12px 20px;
+  font-size: clamp(0.85rem, 2.2vw, 0.95rem);
   font-weight: 600;
   border: 1px solid var(--color-border);
   border-bottom: none;
@@ -71,6 +86,8 @@ const Tab = styled.button<{ $active: boolean }>`
   color: ${({ $active }) => ($active ? 'var(--color-text-inverse)' : 'var(--color-text)')};
   cursor: pointer;
   transition: all 0.2s;
+  min-height: 44px;
+  white-space: nowrap;
   &:hover {
     background: ${({ $active }) => ($active ? 'var(--color-interactive)' : 'var(--color-surface-hover, rgba(0,0,0,0.04))')};
   }
@@ -91,15 +108,19 @@ const CardHeader = styled.div`
 `;
 
 const CardTitle = styled.h2`
-  font-size: 1.3rem;
+  font-size: clamp(1.1rem, 2.8vw, 1.3rem);
   font-weight: 800;
   margin-bottom: 6px;
+  line-height: 1.3;
+  word-break: break-word;
 `;
 
 const CardDesc = styled.p`
-  font-size: 0.88rem;
+  font-size: clamp(0.82rem, 2vw, 0.88rem);
   color: var(--color-text-secondary);
   margin-bottom: 16px;
+  line-height: 1.6;
+  word-break: break-word;
 `;
 
 const CardBody = styled.div`
@@ -116,6 +137,11 @@ const FormRow = styled.div`
   flex-wrap: wrap;
   margin-bottom: 16px;
   align-items: flex-end;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
 `;
 
 const FormItem = styled.label`
@@ -124,6 +150,12 @@ const FormItem = styled.label`
   gap: 4px;
   font-size: 0.82rem;
   color: var(--color-text-secondary);
+  min-width: 0;
+  flex: 1 1 160px;
+  @media (max-width: 600px) {
+    flex: 1 1 100%;
+    width: 100%;
+  }
 `;
 
 const TextInput = styled.input`
@@ -132,8 +164,12 @@ const TextInput = styled.input`
   border: 1px solid var(--color-border);
   background: var(--color-page-bg);
   color: var(--color-text);
-  min-width: 220px;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  min-height: 40px;
   font-family: inherit;
+  box-sizing: border-box;
   &:focus { outline: 2px solid var(--color-interactive); outline-offset: -2px; }
 `;
 
@@ -143,8 +179,11 @@ const NumberInput = styled.input`
   border: 1px solid var(--color-border);
   background: var(--color-page-bg);
   color: var(--color-text);
-  width: 80px;
+  width: 100%;
+  max-width: 120px;
+  min-height: 40px;
   font-family: inherit;
+  box-sizing: border-box;
   &:focus { outline: 2px solid var(--color-interactive); outline-offset: -2px; }
 `;
 
@@ -155,9 +194,11 @@ const CheckboxLabel = styled.label`
   font-size: 0.88rem;
   color: var(--color-text);
   cursor: pointer;
-  padding: 8px 12px;
+  padding: 10px 12px;
   border: 1px solid var(--color-border);
   background: var(--color-page-bg);
+  min-height: 40px;
+  box-sizing: border-box;
 `;
 
 const Select = styled.select`
@@ -167,6 +208,10 @@ const Select = styled.select`
   background: var(--color-page-bg);
   color: var(--color-text);
   font-family: inherit;
+  width: 100%;
+  min-height: 40px;
+  max-width: 100%;
+  box-sizing: border-box;
   &:focus { outline: 2px solid var(--color-interactive); outline-offset: -2px; }
 `;
 
@@ -177,6 +222,7 @@ const SplitGrid = styled.div`
   gap: 16px;
   @media (max-width: 900px) {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 `;
 
@@ -184,6 +230,44 @@ const Pane = styled.div`
   border: 1px solid var(--color-border);
   background: var(--color-page-bg);
   padding: 16px;
+  min-width: 0;
+  overflow: hidden;
+  @media (max-width: 600px) {
+    padding: 12px;
+  }
+`;
+
+/* 预览容器：限高 + 居中，内部 img/canvas 等比自适应 */
+const PreviewBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-height: 320px;
+  min-height: 80px;
+  background: #fff;
+  border: 1px dashed var(--color-border);
+  padding: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+  @media (max-width: 900px) {
+    max-height: 50vh;
+  }
+  @media (max-width: 600px) {
+    max-height: 40vh;
+    min-height: 60px;
+    padding: 4px;
+  }
+  > img,
+  > canvas {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    image-rendering: pixelated;
+  }
 `;
 
 const PaneTitle = styled.h3`
@@ -192,6 +276,52 @@ const PaneTitle = styled.h3`
   margin-bottom: 12px;
   color: var(--color-text);
 `;
+
+/* 结果元信息：尺寸、字节数、模式等 */
+const ResultMeta = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+`;
+
+const MetaTag = styled.span`
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  background: var(--color-page-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  font-size: 0.78rem;
+`;
+
+/* 通用输出 Pane：标题 + C 数组 + 操作 + 元信息 */
+const OutputPane: React.FC<{
+  title?: string;
+  code: string;
+  onCopy: () => void;
+  extraActions?: React.ReactNode;
+  meta?: React.ReactNode;
+}> = ({ title = 'C 数组输出', code, onCopy, extraActions, meta }) => (
+  <Pane>
+    <PaneTitle>{title}</PaneTitle>
+    {code ? (
+      <>
+        <CodeBoxWide>{code}</CodeBoxWide>
+        <ActionRow>
+          <Button onClick={onCopy}>复制代码</Button>
+          {extraActions}
+        </ActionRow>
+        {meta && <ResultMeta>{meta}</ResultMeta>}
+      </>
+    ) : (
+      <Hint>暂无结果</Hint>
+    )}
+  </Pane>
+);
 
 const PreviewArea = styled.div`
   display: flex;
@@ -202,16 +332,32 @@ const PreviewArea = styled.div`
 
 const CodeBox = styled.pre`
   font-family: 'Source Code Pro', Menlo, Consolas, monospace;
-  font-size: 0.8rem;
+  font-size: clamp(0.72rem, 1.8vw, 0.8rem);
   line-height: 1.6;
-  margin: 0;
+  margin: 0 auto;
   padding: 12px;
   background: #1e1e1e;
   color: #e6e6e6;
   border: 1px solid var(--color-border);
   overflow: auto;
   max-height: 360px;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
   white-space: pre;
+  border-radius: 4px;
+  -webkit-overflow-scrolling: touch;
+  @media (max-width: 600px) {
+    padding: 8px;
+    max-height: 280px;
+  }
+`;
+
+const CodeBoxWide = styled(CodeBox)`
+  max-width: 960px;
+  @media (max-width: 1024px) {
+    max-width: 100%;
+  }
 `;
 
 const ActionRow = styled.div`
@@ -219,10 +365,15 @@ const ActionRow = styled.div`
   gap: 8px;
   margin-top: 12px;
   flex-wrap: wrap;
+  @media (max-width: 600px) {
+    > button {
+      flex: 1 1 calc(50% - 4px);
+    }
+  }
 `;
 
 const Button = styled.button`
-  padding: 8px 18px;
+  padding: 10px 18px;
   font-size: 0.88rem;
   font-weight: 600;
   border: 1px solid var(--color-border);
@@ -230,6 +381,8 @@ const Button = styled.button`
   color: var(--color-text-inverse);
   cursor: pointer;
   transition: opacity 0.2s;
+  min-height: 40px;
+  white-space: nowrap;
   &:hover { opacity: 0.85; }
   &:disabled { opacity: 0.4; cursor: not-allowed; }
 `;
@@ -243,6 +396,10 @@ const GhostButton = styled(Button)`
 const FileInput = styled.input`
   font-size: 0.88rem;
   font-family: inherit;
+  width: 100%;
+  max-width: 100%;
+  min-height: 40px;
+  box-sizing: border-box;
 `;
 
 const Hint = styled.p`
@@ -282,18 +439,32 @@ const GlyphPreview: React.FC<{ result: GlyphResult | null }> = ({ result }) => {
   useEffect(() => {
     if (!ref.current || !result) return;
     ref.current.innerHTML = '';
+    // 根据容器宽度反推合适的 scale（保证所有字符 canvas 总宽不超过容器）
+    const containerW = ref.current.clientWidth || 320;
+    const totalCellsW = result.bytes.length * result.width;
+    const maxScale = Math.max(1, Math.floor((containerW - 8) / totalCellsW));
+    const scale = Math.min(4, maxScale);
     result.bytes.forEach((bytes) => {
-      const cv = bytesToCanvas(bytes, result.width, result.height, 4);
+      const cv = bytesToCanvas(bytes, result.width, result.height, scale);
+      cv.style.maxWidth = '100%';
+      cv.style.height = 'auto';
+      cv.style.imageRendering = 'pixelated';
       ref.current!.appendChild(cv);
     });
   }, [result]);
   if (!result) return <Hint>暂无结果</Hint>;
   return (
-    <PreviewArea ref={ref}>
-      {result.bytes.map((_, i) => (
-        <canvas key={i} style={{ display: 'none' }} />
-      ))}
-    </PreviewArea>
+    <PreviewArea
+      ref={ref}
+      style={{
+        padding: 4,
+        border: '1px dashed var(--color-border)',
+        background: '#fff',
+        minHeight: 60,
+        maxHeight: 240,
+        overflow: 'auto',
+      }}
+    />
   );
 };
 
@@ -329,7 +500,7 @@ const AsciiTab: React.FC = () => {
       <CardHeader>
         <CardTitle>ASCII 字模</CardTitle>
         <CardDesc>
-          内置 5×7、8×8 两套字库；大于 8×8 的尺寸请切到「汉字取模」上传 .ttf 字体取模。
+          内置 5×7、8×8 两套字库；大于 8×8 的尺寸可启用「更多尺寸」按比例放大，或切到「汉字取模」用浏览器字体。
         </CardDesc>
       </CardHeader>
       <CardBody>
@@ -379,17 +550,20 @@ const AsciiTab: React.FC = () => {
           <Pane>
             <PaneTitle>预览（{result.width} × {result.height}）</PaneTitle>
             <GlyphPreview result={result} />
+            <ResultMeta>
+              <MetaTag>字符数 {result.bytes.length}</MetaTag>
+              <MetaTag>单字符 {Math.ceil(result.width / 8) * result.height} 字节</MetaTag>
+              <MetaTag>合计 {result.bytes.length * Math.ceil(result.width / 8) * result.height} 字节</MetaTag>
+            </ResultMeta>
           </Pane>
-          <Pane>
-            <PaneTitle>C 数组输出</PaneTitle>
-            <CodeBox>{code}</CodeBox>
-            <ActionRow>
-              <Button onClick={() => navigator.clipboard.writeText(code)}>复制代码</Button>
-            </ActionRow>
-          </Pane>
+          <OutputPane
+            title="C 数组输出"
+            code={code}
+            onCopy={() => navigator.clipboard.writeText(code)}
+          />
         </SplitGrid>
         <Hint>
-          每字符字节数 = ⌈W / 8⌉ × H。当前 {result.bytes.length} 字符 × {Math.ceil(result.width / 8) * result.height} 字节 = {result.bytes.length * Math.ceil(result.width / 8) * result.height} 字节。
+          每字符字节数 = ⌈W / 8⌉ × H；扫描方向：左→右、上→下；字节内 bit7(MSB) 在左。
         </Hint>
       </CardBody>
     </Card>
@@ -489,32 +663,41 @@ const CnTab: React.FC = () => {
 
         <SplitGrid>
           <Pane>
-            <PaneTitle>预览</PaneTitle>
+            <PaneTitle>预览（{result.width} × {result.height}）</PaneTitle>
             <GlyphPreview result={result} />
-            <Hint>浏览器实际渲染效果：</Hint>
+            <ResultMeta>
+              <MetaTag>字符数 {result.bytes.length}</MetaTag>
+              <MetaTag>单字符 {Math.ceil(result.width / 8) * result.height} 字节</MetaTag>
+              <MetaTag>合计 {result.bytes.length * Math.ceil(result.width / 8) * result.height} 字节</MetaTag>
+            </ResultMeta>
             <div
               style={{
                 fontFamily,
                 fontWeight: String(fontWeight),
-                fontSize: cellSize,
-                lineHeight: 1,
-                marginTop: 4,
+                fontSize: `min(${cellSize}px, 12vw)`,
+                lineHeight: 1.2,
+                marginTop: 12,
+                wordBreak: 'break-word',
+                overflowWrap: 'break-word',
+                maxWidth: '100%',
+                padding: '8px 12px',
+                border: '1px dashed var(--color-border)',
+                background: 'var(--color-page-bg)',
+                borderRadius: 4,
               }}
             >
-              {text}
+              {text || '（空）'}
             </div>
           </Pane>
-          <Pane>
-            <PaneTitle>C 数组输出</PaneTitle>
-            <CodeBox>{code}</CodeBox>
-            <ActionRow>
-              <Button onClick={() => navigator.clipboard.writeText(code)}>复制代码</Button>
-            </ActionRow>
-          </Pane>
+          <OutputPane
+            title="C 数组输出"
+            code={code}
+            onCopy={() => navigator.clipboard.writeText(code)}
+          />
         </SplitGrid>
 
         <Hint>
-          若某个汉字渲染为空（全是白点），说明当前浏览器/系统缺少该字符字形——可尝试上方"自定义字体栈"切换字体。
+          浏览器实际渲染效果如上预览下方文本所示。若某个汉字渲染为空（全是白点），说明当前浏览器/系统缺少该字符字形——可尝试上方"自定义字体栈"切换字体。
         </Hint>
       </CardBody>
     </Card>
@@ -524,6 +707,20 @@ const CnTab: React.FC = () => {
 /* ── 图片 Tab ── */
 type ImgMode = 'mono' | 'rgb565';
 
+/** 常见 OLED / LCD 屏幕尺寸预设（宽 × 高） */
+const SIZE_PRESETS: { label: string; w: number; h: number }[] = [
+  { label: '原图尺寸', w: 0, h: 0 },
+  { label: '128 × 64  （SSD1306 0.96"）', w: 128, h: 64 },
+  { label: '128 × 32  （SSD1306 0.91"）', w: 128, h: 32 },
+  { label: '64 × 48', w: 64, h: 48 },
+  { label: '64 × 32', w: 64, h: 32 },
+  { label: '96 × 16', w: 96, h: 16 },
+  { label: '240 × 135  （1.14" ST7789）', w: 240, h: 135 },
+  { label: '320 × 240  （QVGA）', w: 320, h: 240 },
+  { label: '160 × 80  （0.96" ST7735）', w: 160, h: 80 },
+  { label: '自定义', w: -1, h: -1 },
+];
+
 const ImageTab: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>('');
@@ -532,6 +729,7 @@ const ImageTab: React.FC = () => {
   const [dither, setDither] = useState(false);
   const [targetW, setTargetW] = useState(0);
   const [targetH, setTargetH] = useState(0);
+  const [presetIdx, setPresetIdx] = useState(1); // 默认 128×64
   const [bytes, setBytes] = useState<number[]>([]);
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
@@ -550,10 +748,23 @@ const ImageTab: React.FC = () => {
     if (!previewRef.current || !bytes.length) return;
     previewRef.current.innerHTML = '';
     const cv = mode === 'mono'
-      ? bytesToCanvas(bytes, width, height, 4)
-      : rgb565ToCanvas(bytes, width, height, 2);
+      ? bytesToCanvas(bytes, width, height, 1)
+      : rgb565ToCanvas(bytes, width, height, 1);
+    cv.style.maxWidth = '100%';
+    cv.style.maxHeight = '100%';
+    cv.style.width = 'auto';
+    cv.style.height = 'auto';
+    cv.style.imageRendering = 'pixelated';
     previewRef.current.appendChild(cv);
   }, [bytes, width, height, mode]);
+
+  const handlePresetChange = (idx: number) => {
+    setPresetIdx(idx);
+    const p = SIZE_PRESETS[idx];
+    if (p.w < 0) return; // 自定义：保持当前值不变
+    setTargetW(p.w);
+    setTargetH(p.h);
+  };
 
   const run = async () => {
     if (!file) return;
@@ -606,12 +817,35 @@ const ImageTab: React.FC = () => {
             </Select>
           </FormItem>
           <FormItem>
-            <span>目标宽（0=原图）</span>
-            <NumberInput type="number" min={0} value={targetW} onChange={(e) => setTargetW(+e.target.value)} />
+            <span>目标尺寸</span>
+            <Select
+              value={String(presetIdx)}
+              onChange={(e) => handlePresetChange(+e.target.value)}
+            >
+              {SIZE_PRESETS.map((p, i) => (
+                <option key={p.label} value={i}>{p.label}</option>
+              ))}
+            </Select>
           </FormItem>
           <FormItem>
-            <span>目标高（0=原图）</span>
-            <NumberInput type="number" min={0} value={targetH} onChange={(e) => setTargetH(+e.target.value)} />
+            <span>宽 W（0=原图）</span>
+            <NumberInput
+              type="number"
+              min={0}
+              max={1024}
+              value={targetW}
+              onChange={(e) => { setTargetW(+e.target.value); setPresetIdx(SIZE_PRESETS.length - 1); }}
+            />
+          </FormItem>
+          <FormItem>
+            <span>高 H（0=原图）</span>
+            <NumberInput
+              type="number"
+              min={0}
+              max={1024}
+              value={targetH}
+              onChange={(e) => { setTargetH(+e.target.value); setPresetIdx(SIZE_PRESETS.length - 1); }}
+            />
           </FormItem>
           {mode === 'mono' && (
             <>
@@ -635,28 +869,32 @@ const ImageTab: React.FC = () => {
           <Hint><StatusBadge $tone={status.tone}>{status.msg}</StatusBadge></Hint>
         )}
 
-        {previewUrl && (
-          <SplitGrid>
-            <Pane>
-              <PaneTitle>原图</PaneTitle>
-              <img src={previewUrl} alt="原图" style={{ maxWidth: '100%', imageRendering: 'pixelated' }} />
-            </Pane>
-            <Pane>
-              <PaneTitle>取模结果预览</PaneTitle>
-              <div ref={previewRef} />
-              <Hint>
-                {width}×{height}，每像素 {bpp} 字节，总 {bytes.length} 字节
-              </Hint>
-            </Pane>
-          </SplitGrid>
-        )}
-
-        {bytes.length > 0 && (
-          <Pane style={{ marginTop: 16 }}>
-            <PaneTitle>C 数组输出</PaneTitle>
-            <CodeBox>{code}</CodeBox>
-            <ActionRow>
-              <Button onClick={() => navigator.clipboard.writeText(code)}>复制代码</Button>
+        <SplitGrid>
+          <Pane>
+            <PaneTitle>预览（{width} × {height}）</PaneTitle>
+            <PreviewBox>
+              {previewUrl
+                ? <img src={previewUrl} alt="原图" />
+                : <Hint>请先选择图片</Hint>}
+            </PreviewBox>
+            <ResultMeta>
+              <MetaTag>尺寸 {width} × {height}</MetaTag>
+              <MetaTag>每像素 {bpp} 字节</MetaTag>
+              <MetaTag>合计 {bytes.length} 字节</MetaTag>
+              <MetaTag>模式 {mode === 'mono' ? '单色' : 'RGB565'}</MetaTag>
+            </ResultMeta>
+            <Hint style={{ marginTop: 12, marginBottom: 0 }}>取模结果</Hint>
+            <PreviewBox style={{ marginTop: 4 }}>
+              {bytes.length > 0
+                ? <div ref={previewRef} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%' }} />
+                : <Hint>点击「开始取模」生成</Hint>}
+            </PreviewBox>
+          </Pane>
+          <OutputPane
+            title="C 数组输出"
+            code={code}
+            onCopy={() => navigator.clipboard.writeText(code)}
+            extraActions={bytes.length > 0 ? (
               <GhostButton onClick={() => {
                 const blob = new Blob([code], { type: 'text/plain' });
                 const a = document.createElement('a');
@@ -665,9 +903,13 @@ const ImageTab: React.FC = () => {
                 a.click();
                 URL.revokeObjectURL(a.href);
               }}>下载 .h 文件</GhostButton>
-            </ActionRow>
-          </Pane>
-        )}
+            ) : undefined}
+          />
+        </SplitGrid>
+
+        <Hint>
+          单色模式支持阈值 / Floyd-Steinberg 抖动；原色模式输出 RGB565 大端字节流。
+        </Hint>
       </CardBody>
     </Card>
   );
