@@ -127,7 +127,7 @@ interface AboutPage {
 export const aboutData: Record<string, AboutPage> = {
   skills: {
     title: '后端开发',
-    subtitle: 'Java | 微服务 | 云原生',
+    subtitle: 'Java | Spring 微服务 | 分布式系统',
     sections: [
       {
         label: '做过什么',
@@ -141,7 +141,8 @@ export const aboutData: Record<string, AboutPage> = {
       {
         label: '还在做什么',
         content: [
-          'Java 后端底层、云原生、DevOps',
+          'Java 后端工程化、云原生与稳定性治理',
+          '面向高频接口的性能优化与风险前置治理',
           'Milvus 向量数据库、HNSW/IVF 索引算法',
         ],
       },
@@ -151,6 +152,28 @@ export const aboutData: Record<string, AboutPage> = {
           '工程化升级、AI Agent 高阶',
           '智能体编排、多语言语义检索',
           'IoT 设备通信层封装、Flutter 跨平台、TTS 语音交互'
+        ],
+      },
+    ],
+  },
+  career: {
+    title: '职业经历',
+    subtitle: '工业自动化 → Java 后端 → AI 工程化',
+    sections: [
+      {
+        label: '做过什么',
+        content: [
+          '十余年技术工作经历，早期从事工业自动化，后转型 Java 后端开发，拥有约 6 年后端实战经验。',
+          '陕西东润：参与陕煤运销集团数字化平台从 0 到 1 建设，负责需求调研、用户反馈跟进和概要设计，完成合同调运、质检、审批工作流、结算等业务模块，并参与多租户开放平台建设。',
+          '反射狐科技：担任后端负责人，从零搭建剧本杀 SaaS 平台，覆盖剧本创作、剧本游玩、店铺宣发、支付等核心业务，并集成 AI 剧本创作、游戏指引和智能客服。',
+          '按 SRE 理念开展稳定性建设，投入约 30% 精力做运维治理，重点关注 P999 长尾延迟，对高频接口提前做预处理，尽可能将隐患消解在故障发生前。',
+        ],
+        tags: ['Java', 'Spring 微服务', 'MySQL', 'Redis', '分布式系统', 'SRE', 'PMP'],
+      },
+      {
+        label: '还在沉淀',
+        content: [
+          '2026 年上半年除休整外，持续进行技术沉淀：开发偏上位机形态的材料质检项目，自主学习嵌入式以拓展底层视野，持续深耕 AI Agent 相关技术。',
         ],
       },
     ],
@@ -198,7 +221,7 @@ export const aboutData: Record<string, AboutPage> = {
       {
         label: '还在做什么',
         content: [
-          '8 年 Java 后端 + 5 年工业自动化',
+          '约 6 年 Java 后端实战 + 工业自动化经历',
           '硬件工程逻辑 + 互联网高并发架构',
         ],
       },
@@ -241,8 +264,8 @@ export const aboutData: Record<string, AboutPage> = {
     ],
   },
   iot: {
-    title: 'ESP32 IoT 探索',
-    subtitle: 'ESP32 | MQTT | 想搞点东西',
+    title: '单片机与 IoT 探索',
+    subtitle: '单片机 | MQTT | IoT 探索',
     sections: [
       {
         label: '做过什么',
