@@ -379,6 +379,116 @@ const SectionLabel = styled.h3`
   margin-bottom: 12px;
 `;
 
+/* ── Demo Entry ── */
+const DemoRow = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px 28px;
+  padding: 24px 28px;
+  border: 1px solid var(--color-interactive);
+  // background: linear-gradient(135deg, #5e6063ff 0%, #7799eeff 50%, #777779ff 140%);
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 240px;
+    height: 240px;
+    // background: radial-gradient(circle, rgba(127, 200, 255, 0.35) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  @media (max-width: 768px) {
+    padding: 20px;
+    gap: 16px 20px;
+  }
+`;
+
+const DemoMain = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  z-index: 1;
+`;
+
+const DemoLabel = styled.span`
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  // color: #7FC8FF;
+`;
+
+const DemoLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(2.2rem, 3.4vw, 2.6rem);
+  font-weight: 800;
+  font-family: 'Source Code Pro', Menlo, Monaco, Consolas, monospace;
+  color: #4b89fcff;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.2s, transform 0.2s;
+  &:hover {
+    // color: #7FC8FF;
+    transform: translateX(2px);
+  }
+`;
+
+const DemoArrow = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  font-size: 3rem;
+  // color: #030710;
+  // background: #7FC8FF;
+  transition: transform 0.2s, background 0.2s;
+  ${DemoLink}:hover & {
+    transform: translate(2px, -2px);
+    // background: #FFFFFF;
+  }
+`;
+
+const DemoMeta = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-left: auto;
+  position: relative;
+  z-index: 1;
+`;
+
+const DemoMetaItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 14px;
+  // background: rgba(127, 200, 255, 0.08);
+  // border: 1px solid rgba(127, 200, 255, 0.25);
+  min-width: 140px;
+`;
+
+const DemoMetaLabel = styled.span`
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #07365aff;
+`;
+
+const DemoMetaValue = styled.span`
+  font-size: 1.95rem;
+  font-family: 'Source Code Pro', Menlo, Monaco, Consolas, monospace;
+  color: #2e20acff;
+  font-weight: 700;
+`;
+
 /* ── Screenshot Modules ── */
 type Platform = 'PC' | 'App';
 interface ScreenshotItem {
@@ -587,6 +697,37 @@ export default function ProductIoT() {
             <HeroTag $color="var(--color-danger-bg, rgba(255, 80, 80, 0.15))">多端推送</HeroTag>
           </HeroTagRow>
         </HeroSection>
+
+        {/* ===== 在线演示 ===== */}
+        <BorderedCard variants={fadeInUp}>
+          <CardHeader>
+            <CardTitle>在线演示</CardTitle>
+            <CardSubtitle>
+              已部署公网演示环境，欢迎直接体验控制台、设备、告警与通知全流程。
+            </CardSubtitle>
+          </CardHeader>
+          <CardBody>
+            <DemoRow>
+              <DemoMain>
+                <DemoLabel>Live Demo · 在线体验</DemoLabel>
+                <DemoLink href="https://iot.vexrune.top/" target="_blank" rel="noopener noreferrer">
+                  iot.vexrune.top
+                  <DemoArrow aria-hidden="true">↗</DemoArrow>
+                </DemoLink>
+              </DemoMain>
+              <DemoMeta>
+                <DemoMetaItem>
+                  <DemoMetaLabel>演示账号</DemoMetaLabel>
+                  <DemoMetaValue>demo_admin</DemoMetaValue>
+                </DemoMetaItem>
+                <DemoMetaItem>
+                  <DemoMetaLabel>演示密码</DemoMetaLabel>
+                  <DemoMetaValue>12345678</DemoMetaValue>
+                </DemoMetaItem>
+              </DemoMeta>
+            </DemoRow>
+          </CardBody>
+        </BorderedCard>
 
         {/* ===== 产品定位 ===== */}
         <BorderedCard variants={fadeInUp}>
