@@ -577,7 +577,7 @@ export default function ProductIoT() {
             Vex 云物联
           </HeroTitle>
           <HeroSubtitle variants={fadeInUp}>
-            面向 ESP32 自组网设备的物联网监控告警平台，覆盖设备接入、远程控制、告警订阅与多端推送，构建从端到云到人的完整链路。
+            自组网设备的物联网监控告警平台，覆盖设备接入、远程控制、告警订阅与多端推送，构建从端到云到人的完整链路。
           </HeroSubtitle>
           <HeroTagRow variants={fadeInUp}>
             <HeroTag $color="var(--color-primary-bg, rgba(0, 109, 221, 0.15))">PC Web</HeroTag>
@@ -599,15 +599,17 @@ export default function ProductIoT() {
           <CardBody>
             <PosTable>
               <PosLabel>产品形态</PosLabel>
-              <PosValue>云端 SaaS 平台 + PC Web 控制台 + 移动 App，多端同步</PosValue>
+              <PosValue>云端 SaaS 平台 + PC Web 控制台(适配手机页面)，多端同步</PosValue>
               <PosLabel>适用场景</PosLabel>
               <PosValue>ESP32 / 自组网设备远程监控、产线状态看板、机房环境告警、边缘网关集中纳管</PosValue>
               <PosLabel>目标用户</PosLabel>
               <PosValue>运维工程师、设备管理员、产线值班人员、IoT 项目集成方</PosValue>
               <PosLabel>通信协议</PosLabel>
-              <PosValue>MQTT（设备上行 / 下行控制）、WebSocket（实时推送）、HTTP（管理 API）</PosValue>
+              <PosValue>MQTT（设备上行 / 下行控制）、SSE（实时推送）、HTTP（管理 API）</PosValue>
               <PosLabel>数据存储</PosLabel>
               <PosValue>云端时序数据库，设备影子、告警事件、消息订阅记录持久化</PosValue>
+              <PosLabel>AI 智能助手</PosLabel>
+              <PosValue>无需翻看信息，一句直达设备数据与运维结论</PosValue>
               <PosLabel>运行方式</PosLabel>
               <PosValue>7×24 在线服务，公网 / 私有化部署均可</PosValue>
             </PosTable>
@@ -625,12 +627,12 @@ export default function ProductIoT() {
               <WorkflowStep $accent="#006DDD">
                 <StepNum $color="#006DDD">1</StepNum>
                 <StepTitle>设备接入</StepTitle>
-                <StepDesc>ESP32 端通过 MQTT 上线注册，平台下发影子配置，自动建立会话</StepDesc>
+                <StepDesc>设备端支持Modbus RTU/TPC，通过 MQTT 上线注册，平台下发影子配置，自动建立会话</StepDesc>
               </WorkflowStep>
               <WorkflowStep $accent="#3B82F6">
                 <StepNum $color="#3B82F6">2</StepNum>
                 <StepTitle>数据采集</StepTitle>
-                <StepDesc>设备周期性上报状态、传感器数据，平台写入时序库并实时推送控制台</StepDesc>
+                <StepDesc>设备周期性或变化时上报状态、传感器数据，平台写入时序库并实时推送控制台</StepDesc>
               </WorkflowStep>
               <WorkflowStep $accent="#7FC8FF">
                 <StepNum $color="#7FC8FF">3</StepNum>
@@ -699,12 +701,14 @@ export default function ProductIoT() {
                 </FeatureList>
               </FeatureCard>
               <FeatureCard $accent="#3B82F6">
-                <FeatureTitle>登录与权限</FeatureTitle>
-                <FeatureList>
-                  <li>账号密码登录 + 记住登录态</li>
-                  <li>多端会话管理，PC / App 同时在线</li>
-                  <li>后续接入组织 / 角色 / 资源权限</li>
-                </FeatureList>
+                  <FeatureTitle>登录与权限 · 多租户SaaS</FeatureTitle>
+                  <FeatureList>
+                      <li>账号密码登录 + 记住登录态，TOTP二次身份校验</li>
+                      <li>多端会话管理，PC / App 同时在线，会话强制下线</li>
+                      <li>租户隔离，组织‑角色‑用户三级权限体系</li>
+                      <li>资源数据租户强隔离，跨租户数据不可见</li>
+                      <li>细粒度资源授权：设备、网关、告警、看板权限管控</li>
+                  </FeatureList>
               </FeatureCard>
             </FeatureGrid>
           </CardBody>
