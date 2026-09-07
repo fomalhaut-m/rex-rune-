@@ -147,15 +147,15 @@ export default function BuildWith() {
       <BuildTitle>社交媒体</BuildTitle>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <SocialRow>
-          <SocialIcon href="https://github.com/fomalhaut-m" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FaGithub /></SocialIcon>
+          <SocialIcon href="hhttps://github.com/vex-rune" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FaGithub /></SocialIcon>
           <SocialIcon href="https://www.feishu.cn/invitation/page/add_contact/?token=cbdrbf0a-b729-42a7-865d-55376072c05d" target="_blank" rel="noopener noreferrer" aria-label="飞书"><FaPaperPlane /></SocialIcon>
-          <SocialIcon href="https://gitee.com/Fomalhaut_luke" target="_blank" rel="noopener noreferrer" aria-label="Gitee"><SiGitee /></SocialIcon>
+          <SocialIcon href="https://gitee.com/vex-rune" target="_blank" rel="noopener noreferrer" aria-label="Gitee"><SiGitee /></SocialIcon>
           <SocialWrap>
             <SocialIcon href="#" aria-label="微信"><FaWeixin /></SocialIcon>
             <QRPopup><QRImg src={`${process.env.PUBLIC_URL}/weixinq.png`} alt="微信二维码" /></QRPopup>
           </SocialWrap>
           <SocialWrap>
-            <SocialIcon href="https://www.douyin.com/user/fomalhaut_m" target="_blank" rel="noopener noreferrer" aria-label="抖音"><SiTiktok /></SocialIcon>
+            <SocialIcon href="https://www.douyin.com/user/__fomalhaut__" target="_blank" rel="noopener noreferrer" aria-label="抖音"><SiTiktok /></SocialIcon>
             <QRPopup><QRImg src={`${process.env.PUBLIC_URL}/douyinq.png`} alt="抖音二维码" /></QRPopup>
           </SocialWrap>
         </SocialRow>

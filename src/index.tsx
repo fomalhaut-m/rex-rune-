@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import ModelViewer from './pages/ModelViewer';
 import ProductMSA from './pages/ProductMSA';
+import ProductIoT from './pages/ProductIoT';
 import OledFontMaker from './pages/OledFontMaker';
 import reportWebVitals from './reportWebVitals';
 
@@ -24,6 +25,7 @@ root.render(
           <Route path="/about/:id" element={<About />} />
           <Route path="/model" element={<ModelViewer />} />
           <Route path="/product/msa" element={<ProductMSA />} />
+          <Route path="/product/iot" element={<ProductIoT />} />
           <Route path="/tools/oled-font" element={<OledFontMaker />} />
         </Route>
       </Routes>
